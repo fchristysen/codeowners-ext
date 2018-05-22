@@ -1,4 +1,5 @@
 chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
+    console.log("Start" + isFilesSection(details.url))
     if (isFilesSection(details.url)) {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             notifyContentScript(tabs, details.url);
